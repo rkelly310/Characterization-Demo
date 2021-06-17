@@ -1,0 +1,9 @@
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\bin\Debug\netcoreapp3.1\DiscountCalculatorCode.deps.json
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\bin\Debug\netcoreapp3.1\DiscountCalculatorCode.dll
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\bin\Debug\netcoreapp3.1\DiscountCalculatorCode.pdb
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.AssemblyInfoInputs.cache
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.AssemblyInfo.cs
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.csproj.CoreCompileInputs.cache
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.dll
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.pdb
+C:\Users\Rkell\source\repos\DiscountCalculator\DiscountCalculator\obj\Debug\netcoreapp3.1\DiscountCalculatorCode.csprojAssemblyReference.cache
