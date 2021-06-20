@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/rkelly310/NLogDemo/">
-    <img src="images/logging-picture.png" alt="Logo">
+    <img src="images/Characterization.png" alt="Logo">
   </a>
 
   <h2 align="center">Writing Characterization Tests for Inherited Legacy Code</h2>
