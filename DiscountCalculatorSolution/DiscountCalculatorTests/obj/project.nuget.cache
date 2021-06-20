@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EOvIvttTRqoefvMaMi7ba5TfOO4PQqy9ANwlyRYOtPWPQFVE2V9x4oHE5v0H3J3QB1YtVk6mJv22EbA0Lt3tpA==",
+  "dgSpecHash": "dRUeNhrAS0YkoKXjMZuMbSiEfQBerNJqqgb9X4uYgPuqL0Crh6IUkZBEs8Sr3HwFzNjPxT2+ZvNspGtH+i9u9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorTests\\DiscountCalculatorTests.csproj",
+  "projectFilePath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculatorTests\\DiscountCalculatorTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rkell\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\Rkell\\.nuget\\packages\\coverlet.collector\\1.3.0\\coverlet.collector.1.3.0.nupkg.sha512",

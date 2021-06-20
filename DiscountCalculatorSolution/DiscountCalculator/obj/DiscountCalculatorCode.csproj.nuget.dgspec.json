@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculator\\DiscountCalculatorCode.csproj": {}
+    "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculator\\DiscountCalculatorCode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculator\\DiscountCalculatorCode.csproj": {
+    "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculator\\DiscountCalculatorCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculator\\DiscountCalculatorCode.csproj",
+        "projectUniqueName": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculator\\DiscountCalculatorCode.csproj",
         "projectName": "DiscountCalculatorCode",
-        "projectPath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculator\\DiscountCalculatorCode.csproj",
+        "projectPath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculator\\DiscountCalculatorCode.csproj",
         "packagesPath": "C:\\Users\\Rkell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculator\\obj\\",
+        "outputPath": "C:\\Users\\Rkell\\source\\repos\\DiscountCalculator\\DiscountCalculatorSolution\\DiscountCalculator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
