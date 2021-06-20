@@ -60,15 +60,10 @@
 ### About The Project
 
 This project is designed for a lab environment to demonstrate proper characterization test creation in .NET environments. Students will dissect the preexisting code of a Discount Calculator application, develop tests to best understand the given codebase, and make edits to modernize the codebase. Students will use the MSTest framework in Visual Studio or VS Code.
-### Built With
 
 ### Built With
 
 * [Visual Studio] 
-<br>
-
-**Please ensure you also download the following plugins if you do not have them already:**  
-
 * [MSTest Framework]
 
 <br>
@@ -95,166 +90,62 @@ We have some legacy code. We need to make changes. To make changes we need to in
 -Rely on automated Refactoring tools as much as possible.  
 -You must not change the public API of the class.  
 
-Take a look at the three CS files encapsulating this project:
+The given code calculates the discount for a purchase in our online shop. The main logic is in Discount. We also know that we **cannot modify MarketingCampaign class** because it is used by other teams as well.  
+Take a look at the **Discount.cs** code below. How can we test all paths in the core logic?
+
 ```csharp
-<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-	<dependency>
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-api</artifactId>
-    	<version>1.7.25</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-simple</artifactId>
-    <version>1.7.30</version>
-</dependency>
-```
-Then, create a java file within your **src** package folder, and name it **LoggerDemo.java**. Paste in the following code:  
+namespace CharacterizationCode
+{
+    public class Discount
+    {
+        private readonly MarketingCampaign marketingCampaign;
 
-```java
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-public class MyLogger {
-   public static void main(String[] args) {
-      //Creating our custom Logger
-      Logger logger = LoggerFactory.getLogger("FirstLogger");
-
-      //Some simple outputs
-      logger.info("Simply an update");
-      logger.error("Example of an error");
-   }
-}
-```
-If we run the file, we should get get the following:  
-```java
-[main] INFO FirstLogger - Simply an update
-[main] ERROR FirstLogger - Example of an error
-```
-
-### Task 2: Implement Log4J to configure log structure
-Now that we have initialized the Simple Logging Facade, we can add Log4J to change the structure of our log files. We need to download the binding for using log4j and slf4j together. Remove the **slf4j-simple** dependency from your POM and add the following snippet:  
-
-```java
-<dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-log4j12</artifactId>
-    <version>1.7.30</version>
-    <scope>test</scope>
-</dependency>
-<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-</dependency>
-```
-Log4j will help us achieve best practices is the use of its configuration file. With log4j, there is no need to manually modify the vast amounts of logging statements that inevitably pile up within any  application. Within the **src/main/resources** directory, create the a filed called log4j.properties and add the starting options here: 
-
-```java
-log4j.rootLogger=DEBUG, A1
-log4j.appender.A1=org.apache.log4j.ConsoleAppender
-log4j.appender.A1.layout=org.apache.log4j.PatternLayout
-log4j.appender.A1.layout.ConversionPattern=%d [%t] %-5p %c - %m%n
-```
-These are all the default starting options from the log4j documentation found [here](https://logging.apache.org/log4j/2.x/). Before running the program again, we need to make sure Eclipse knows to include this file within the classpath. C**lick Run -> Run Configurations… -> Dependencies -> Classpath Entries -> Click Advanced on the right -> Add Folders**.   
-### Task 3. Implement Best Logging Practices in our Application  
-Lastly, lets add some code for an input-based application that allows a user to make an appointment with the bank, choosing from a list of appointment types and available days to schedule. This avoids bringing in unnecessary dependencies like a REST API, but will also allow us to demonstrate our logger. Replace **MyLogger.java** with the following:  
-
-```java
-import java.util.Scanner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
-
-public class LoggerDemo {
-    public static void main(String[] args) {
-    	String sessionId = "123456";
-    	MDC.put("sessionId", sessionId);
-        Logger logger = LoggerFactory.getLogger("FirstLogger");
-        System.out.print("Welcome to Wells Fargo Appointments. What type of account assistance would you like?\n");
-        Scanner in = new Scanner(System.in);
-        String dentistName = in.next();
-        String[] dentist = { "Personal", "Business", "Other" };
-        String[] days = { "Monday", "Wednesday", "Thursday", "Saturday" };
-        boolean dentistFound = false;
-        boolean dayFound = false;
-
-        for (String s : dentist) {
-            if (s.equals(dentistName)) {
-                System.out.print("One Moment Please...\n");
-                logger.info("You selected: " + dentistName);
-                dentistFound = true;
-                break;
-            }
+        public Discount()
+        {
+            this.marketingCampaign = new MarketingCampaign();
         }
 
-        if (dentistFound) {
-            System.out.println("When would you like to book your appointment?");
-            String dayPicked = in.next();
-            for (String p : days) {
-                if (p.equals(dayPicked)) {
-                    System.out.println("You are booked for " + dayPicked);
-                    logger.info("Appointment booked on " + dayPicked);
-                    dayFound = true;
-                    System.exit(0);
-                }
+        public Money DiscountFor(Money netPrice)
+        {
+            if (marketingCampaign.IsCrazySalesDay())
+            {
+                return netPrice.ReduceBy(15);
             }
-            if (dayFound == false) {
-                logger.error("Sorry, we only available for in-person appointments on Monday, Wednesday, Thursday and Saturday.");
-                logger.info("Exiting application.");
-
-                System.exit(0);
+            if (netPrice.MoreThan(Money.OneThousand))
+            {
+                return netPrice.ReduceBy(10);
             }
+            if (netPrice.MoreThan(Money.OneHundred) && marketingCampaign.IsActive())
+            {
+                return netPrice.ReduceBy(5);
+            }
+            return netPrice;
         }
-        else {
-            logger.error("Invalid assistance option. Please enter 'Personal', 'Business' or 'Other'");
-        }
-        logger.info("Exiting application.");
-        System.exit(0);
     }
 }
 ```
-As it stands, MyLogger.java contains a simple flow of user input asking the following:
-<br>
-1. The type of appointment they would like to make.
-<br>
-2. The day that they would like to book their appointment, from the available days in the days array.  
-<br>
+### Task 2: Modifying Code
 
-Let’s run the program with the same inputs: Business, Sunday.
-We should see the following:  
-```
-Welcome to Wells Fargo Appointments. What type of account assistance would you like?
-Business
-One Moment Please...
-2021-04-22 18:48:52,552 [main] INFO  FirstLogger - You selected: Business
-When would you like to book your appointment?
-Sunday
-2021-04-22 18:48:57,772 [main] ERROR FirstLogger - Sorry, we only available for in-person appointments on Monday, Wednesday, Thursday and Saturday.
-2021-04-22 18:48:57,772 [main] INFO  FirstLogger - Exiting application.
-```   
-### Task 4: Making Queryable Logs  
-To transform our logged outputs into JSON objects, we could typically use Logback. There is extensive documentation on how to achieve this with logback and can be found [here](http://logback.qos.ch/documentation.html). In our application, we can set our log4j.properties file to contain a custom JSON formatter. Modify the file to contain the following:  
-```java
-log4j.rootLogger=INFO, file
-log4j.appender.file=org.apache.log4j.RollingFileAppender
-log4j.appender.file.File=log/logging.log
-log4j.appender.file.MaxFileSize=10MB
-log4j.appender.file.MaxBackupIndex=10
-log4j.appender.file.layout=org.apache.log4j.PatternLayout
-log4j.appender.file.encoding=UTF-8
-log4j.appender.file.layout.ConversionPattern={"timestamp":"%d","logUpdate": "%5p [%t] (%F:%L)","status":"%m","sessionID": "%X{sessionId}}%n"
+At this point we have an idea of how the code works, and are aware that Discount is closely dependent on the MarketingCampaign class. How can we decouple this dependency? Use dependency injection to invert the control and create an interface between the two classes:
+
+```csharp
+    public class MarketingCampaign
+    {
+        public bool IsActive()
+        {
+            return (long) DateTime.Now.TimeOfDay.TotalMilliseconds % 2 == 0;
+        }
+
+        public bool IsCrazySalesDay()
+        {
+            return DateTime.Now.DayOfWeek.Equals(DayOfWeek.Friday);
+        }
+    }
 ```  
-Now we have a logging.log file in our solution directory containing the following in JSON format:  
-```text
-{"timestamp":"2021-04-22 11:55:18,011","logUpdate": " INFO [main] (LoggerDemo.java:24)","status":"You selected: Business","sessionID": "123456}
-"{"timestamp":"2021-04-22 11:55:22,878","logUpdate": " INFO [main] (LoggerDemo.java:36)","status":"Appointment booked on Saturday","sessionID": "123456}
-"{"timestamp":"2021-04-22 18:45:59,677","logUpdate": " INFO [main] (LoggerDemo.java:24)","status":"You selected: Business","sessionID": "123456}
-"{"timestamp":"2021-04-22 18:52:07,963","logUpdate": " INFO [main] (LoggerDemo.java:24)","status":"You selected: Business","sessionID": "123456}
-"{"timestamp":"2021-04-22 18:52:10,529","logUpdate": "ERROR [main] (LoggerDemo.java:42)","status":"Sorry, we only available for in-person appointments on Monday, Wednesday, Thursday and Saturday.","sessionID": "123456}
-"{"timestamp":"2021-04-22 18:52:10,529","logUpdate": " INFO [main] (LoggerDemo.java:43)","status":"Exiting application.","sessionID": "123456}
-"
-```text  
+
+### Task 3: Make Tests Pass  
+Now that we have improved the codebase with decoupling and dependency injection, lets continue developing tests to demonstrate the behavior of the codebase (hint: mocking and stubbing can be used here). View the Solution with some example tests in the 'Solution' section of the repository.  
+
 
 <!-- LICENSE -->
 ## License

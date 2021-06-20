@@ -1,4 +1,4 @@
-namespace A
+namespace CharacterizationCode
 {
     public class Discount
     {

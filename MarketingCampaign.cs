@@ -1,6 +1,6 @@
 using System;
 
-namespace Org.Codecop.Dependencies.A
+namespace CharacterizationCode
 {
     public class MarketingCampaign
     {
