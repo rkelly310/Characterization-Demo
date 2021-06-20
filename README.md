@@ -60,15 +60,10 @@
 ### About The Project
 
 This project is designed for a lab environment to demonstrate proper characterization test creation in .NET environments. Students will dissect the preexisting code of a Discount Calculator application, develop tests to best understand the given codebase, and make edits to modernize the codebase. Students will use the MSTest framework in Visual Studio or VS Code.
-### Built With
 
 ### Built With
 
 * [Visual Studio] 
-<br>
-
-**Please ensure you also download the following plugins if you do not have them already:**  
-
 * [MSTest Framework]
 
 <br>
