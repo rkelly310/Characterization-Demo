@@ -5,10 +5,10 @@
     <img src="images/logging-picture.png" alt="Logo">
   </a>
 
-  <h2 align="center">Writing, Configuring and Locating Log Files using SLF4J and Log4J</h2>
+  <h2 align="center">Writing Characterization Tests for Inherited Legacy Code</h2>
 
   <p align="center">
-    A demo lab instructing users on how to configure structured and unstructured log files, set targets and write logging syntax using Java Runtime, the Simple Logging Facade and the JUnit Framework.
+    A demo lab instructing users on how to write characterization tests given an inherited codebase, as well as how to properly refactor the code to be most efficient and maintain modern programming standards. 
     <br />
     <a href="https://github.com/rkelly310/Log4JDemo"><strong>Explore the docs �</strong></a>
     <br />
@@ -59,28 +59,25 @@
 <!-- ABOUT THE PROJECT -->
 ### About The Project
 
-This project is designed for a lab environment to demonstrate proper logging practices in Java environments. Students will configure logging properties and targets, design and test a simple Logger project and organize data by key-value and severity. 
-
+This project is designed for a lab environment to demonstrate proper characterization test creation in .NET environments. Students will dissect the preexisting code of a Discount Calculator application, develop tests to best understand the given codebase, and make edits to modernize the codebase. Students will use the MSTest framework in Visual Studio or VS Code.
 ### Built With
 
 ### Built With
 
-* [Eclipse IDE] Version: 2021-03 (4.19.0) (https://www.eclipse.org/downloads/)
-* [Java Development Kit v.11.28](https://openjdk.java.net/projects/jdk/11/)
-* Chromedriver.exe (or another browser equivalent) existing in your System PATH) https://chromedriver.chromium.org/downloads
+* [Visual Studio] 
 <br>
 
 **Please ensure you also download the following plugins if you do not have them already:**  
 
-* [Junit 5] Testing Framework
-* SLF4J version 1.7.25
+* [MSTest Framework]
 
+<br>
 <!-- GETTING STARTED -->
 ## Getting Started
 
 ### Prerequisites
 
-None, other than an installation of Eclipse or another Java IDE and Maven. Students can download the full solution, or follow the steps below to develop the Logger application on their own.
+None, other than an installation of Visual Studio. Students can download the full solution with example written tests, or follow the steps below to develop the their own tests.
 
 ### Installation
 
@@ -90,11 +87,16 @@ Simply clone the repo to see the full solution:
    ```
 <!-- Instructions -->
 ## Instructions
-### Task 1: Set Up your pom.xml file and create a basic logging app
+### Task 1: Introducing Tests
 
-The first step in this lab is to create a simple Maven application. Once the **pom.xml** is initialized, add the following dependencies to your POM file.  
+We have some legacy code. We need to make changes. To make changes we need to introduce tests first. We might have to change some code to enable testing. We need to introduce so-called Seams (see Michael Feathers' Working Effectively with Legacy Code). Changing code without test is risky, so we want to:  
+<br>
+-Only change as little code as possible.  
+-Rely on automated Refactoring tools as much as possible.  
+-You must not change the public API of the class.  
 
-```java
+Take a look at the three CS files encapsulating this project:
+```csharp
 <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 	<dependency>
     	<groupId>org.slf4j</groupId>
