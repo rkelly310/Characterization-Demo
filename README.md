@@ -91,7 +91,7 @@ We have some legacy code. We need to make changes. To make changes we need to in
 -You must not change the public API of the class.  
 
 The given code calculates the discount for a purchase in our online shop. The main logic is in Discount. We also know that we **cannot modify MarketingCampaign class** because it is used by other teams as well.  
-Take a look at the **Discount.cs** code below. How can this be tested?
+Take a look at the **Discount.cs** code below. How can we test all paths in the core logic?
 
 ```csharp
 namespace CharacterizationCode
