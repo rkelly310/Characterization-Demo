@@ -5,10 +5,10 @@
     <img src="images/Characterization.png" alt="Logo">
   </a>
 
-  <h2 align="center">Writing Characterization Tests for Inherited Legacy Code</h2>
+  <h2 align="center">Breaking Dependencies for Inherited Legacy Code</h2>
 
   <p align="center">
-    A demo lab instructing users on how to write characterization tests given an inherited codebase, as well as how to properly refactor the code to be most efficient and maintain modern programming standards. 
+    A demo lab instructing users on how to write characterization tests and break common dependencies for a given inherited codebase, as well as how to properly refactor the code to be most efficient and maintain modern programming standards. 
     <br />
     <a href="https://github.com/rkelly310/Log4JDemo"><strong>Explore the docs �</strong></a>
     <br />
@@ -59,7 +59,7 @@
 <!-- ABOUT THE PROJECT -->
 ### About The Project
 
-This project is designed for a lab environment to demonstrate proper characterization test creation in .NET environments. Students will dissect the preexisting code of a Discount Calculator application, develop tests to best understand the given codebase, and make edits to modernize the codebase. Students will use the MSTest framework in Visual Studio or VS Code.
+This project is designed for a lab environment to demonstrate proper dependency decoupling and test creation in .NET environments. Students will dissect the preexisting code of a Discount Calculator application, develop tests to best understand the given codebase, and make edits to modernize the codebase. Students will use the MSTest framework in Visual Studio or VS Code.
 
 ### Built With
 
